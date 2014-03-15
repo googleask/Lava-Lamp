@@ -1,3 +1,5 @@
+//This is jquery hence do add Jquery in your page.
+
 $('.selected').addClass('active');
 var currentleft=$('.selected').position().left+"px";
 var currentwidth=$('.selected').css('width');
