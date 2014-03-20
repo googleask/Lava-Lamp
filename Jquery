@@ -1,4 +1,8 @@
-//This is jquery hence do add Jquery in your page.
+/*
+Lava Lamp Navigation Plugin For Blogger
+Developed By Mohammad Hamza
+bloggerever.com
+*/
 
 if($('.nav>ul>li').hasClass('selected')){
 $('.selected').addClass('active');
