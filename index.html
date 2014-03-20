@@ -1,51 +1,36 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Lava lamp navigation : Create a drop down menu with a lava lamp using Jquery" />
 
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Lava lamp navigation by bloggerever</title>
+    <title>Lava lamp navigation</title>
   </head>
 
   <body>
-    <a id="forkme_banner" href="https://github.com/bloggerever/Lava-Lamp">View on GitHub</a>
-    <div class="shell">
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Lava lamp navigation</h1>
-            <h2>Create a drop down menu with a lava lamp using Jquery</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/bloggerever/Lava-Lamp">View on GitHub</a>
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/bloggerever/Lava-Lamp/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/bloggerever/Lava-Lamp/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
+          <h1 id="project_title">Lava lamp navigation</h1>
+          <h2 id="project_tagline">Create a drop down menu with a lava lamp using Jquery</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/bloggerever/Lava-Lamp/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/bloggerever/Lava-Lamp/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h2>
 <a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
@@ -54,23 +39,86 @@
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>To use it use need to create a markup first,for this make a <code>div</code> with a <code>class='nav'</code>.</p>
+<h3>
+<a name="html" class="anchor" href="#html"><span class="octicon octicon-link"></span></a>HTML</h3>
+
+<p>To use it use need to create a markup first,for this make a <code>div</code> with a <code>class='nav'</code>.
+<code>&lt;div class='nav'&gt;
+....
+&lt;/div&gt;</code>
+Under this you just have to follow a traditional markup of navigations that is using <code>ul</code> and <code>li</code>.For child elements,add them under the <code>li</code> of a parent as I done below:</p>
+
+<pre><code>&lt;ul&gt;
+&lt;li&gt;&lt;a href='#'&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='#'&gt;Parent&lt;/a&gt;
+&lt;li&gt;&lt;a href='#'&gt;Child 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='#'&gt;Child 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href='#'&gt;Child 3&lt;/a&gt;&lt;/li&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3>
+<a name="css" class="anchor" href="#css"><span class="octicon octicon-link"></span></a>CSS</h3>
+
+<p>The CSS is quite simple to handle all you need to do is to just copy the whole CSS and paste in your page.If you want to change colour of the lamp then you need to do a few changes.</p>
+
+<p>First do change <code>background-color</code> of <code>.lamp span</code></p>
+
+<pre><code>.lamp span {
+    display:block;
+    height:4px;
+    background:#ee6666;
+    position: relative;
+}
+</code></pre>
+
+<p>Secondly change the <code>border-bottom-color</code> in the below part.</p>
+
+<pre><code>.lamp span:after {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content:" ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(238, 102, 102, 0);
+    border-bottom-color: #ee6666;
+    border-width: 4px;
+    margin-left: -4px;
+}
+</code></pre>
+
+<h3>
+<a name="jquery" class="anchor" href="#jquery"><span class="octicon octicon-link"></span></a>Jquery</h3>
+
+<p>Their is no need of changing the Jquery,but a point need to be discussed here.</p>
+
+<p>If their is a link that is currently open in navigation menu then it should be classed as <code>selected</code> because according to script,the lamp will stay under the element having a class <code>selected</code>.If their is no element having class <code>selected</code> then lamp will always stay at the first element,that is generally home link.</p>
+
+<h2>
+<a name="contributor" class="anchor" href="#contributor"><span class="octicon octicon-link"></span></a>Contributor</h2>
+
+<p>The script is written by <a href="http://google.com/+mohammadhamzadhamiya">Mohammad Hamza</a>,author of <a href="http://bloggerever.com">Blogger Ever</a>.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This script is under <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
       </section>
+    </div>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/bloggerever">bloggerever</a> can be found on <a href="https://github.com/bloggerever/Lava-Lamp">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Lava lamp navigation maintained by <a href="https://github.com/bloggerever">bloggerever</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
-
     </div>
 
     
+
   </body>
 </html>
