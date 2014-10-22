@@ -3,7 +3,7 @@ Lava Lamp Navigation
 Developed By Mohammad Hamza
 bloggerever.com
 */
-
+$(function(){
 if($('.nav>ul>li').hasClass('selected')){
 $('.selected').addClass('active');
 var currentleft=$('.selected').position().left+"px";
@@ -35,4 +35,5 @@ else{
 var currentwidth=$('.active').css('width');
 $('.lamp').css({"left":currentleft,"width":currentwidth});
 }
+});
 });
